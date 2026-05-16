@@ -1,1 +1,16 @@
+Ejercicio 3 
+Modelo de IA: Claude Sonnet 4.6
+Herramienta: claude. ai
+Fecha: 2026-05-13
+Prompt: como calcular el mean y la variance de una muestra mediante un vector
 
+Ejercicio 4
+Modelo de IA: Claude Sonnet 4.6
+Herramienta: claude. ai
+Fecha: 2026-05-15
+Prompt: como calcular una funcion pearson_r de dos variables
+
+Ejercicio 5 
+Modelo de IA: Claude Sonnet 4.6
+}Fecha: 2026-05-15
+Prompt: convertir los numeros 7,8 y 16 en c++
