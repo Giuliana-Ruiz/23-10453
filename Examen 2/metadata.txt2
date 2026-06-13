@@ -7,10 +7,7 @@ para optimizar el número de iteraciones recursivas. Usa ::zilly+ y las funcione
 
 Modelo de IA: Claude Sonnet 4.6
 Herramienta: Claude. IA
-Prompt: Genera un programa completo en C++ que implemente el algoritmo k-means clustering para agrupar puntos 3D. El 
-programa debe ser modular con archivos separados: types.h (structs Coord_3D y Labeled), loader.h (carga de datos CSV a 
-vector<Coord_3D>), kmeans.h (algoritmo con función convergio() como condición de parada documentada, distancia 
-euclidiana, WCSS), y output.h (genera clasificados.csv y summary.txt). El ejecutable se llama cluster y se invoca como: 
-cluster <k> <datos.csv>. Debe experimentar con k=1 a 6, usar el método del codo con WCSS para determinar el k óptimo evitando 
-overfitting, etiquetar los clusters con letras A-F, y generar un summary.txt con formato: Label: N, (x, y, z), MD por 
-cada cluster."
+Prompt: Crea un programa en C++ modular que implemente k-means clustering para puntos 3D. Que tenga archivos 
+separados para las estructuras, carga de datos, el algoritmo y la salida. El ejecutable se llama cluster y se usa como 
+cluster <k> <datos.csv>. Usa WCSS para encontrar el k óptimo entre 1 y 6, etiqueta los clusters con A-F y genera 
+clasificados.csv y summary.txt.
