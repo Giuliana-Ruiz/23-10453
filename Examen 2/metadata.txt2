@@ -1,0 +1,16 @@
+Modelo de IA: Claude Sonnet 4.6
+Herramienta: Claude. AI
+Fecha: 2026-06-06
+Prompt: Genera una implementación de la función de multiplicación mult en el lenguaje Zilly usando recursión con suma, 
+sin usar el operador * directamente. Debe funcionar con números positivos y negativos, y aprovechar la conmutatividad 
+para optimizar el número de iteraciones recursivas. Usa ::zilly+ y las funciones primitivas sub y lt."
+
+Modelo de IA: Claude Sonnet 4.6
+Herramienta: Claude. IA
+Prompt: Genera un programa completo en C++ que implemente el algoritmo k-means clustering para agrupar puntos 3D. El 
+programa debe ser modular con archivos separados: types.h (structs Coord_3D y Labeled), loader.h (carga de datos CSV a 
+vector<Coord_3D>), kmeans.h (algoritmo con función convergio() como condición de parada documentada, distancia 
+euclidiana, WCSS), y output.h (genera clasificados.csv y summary.txt). El ejecutable se llama cluster y se invoca como: 
+cluster <k> <datos.csv>. Debe experimentar con k=1 a 6, usar el método del codo con WCSS para determinar el k óptimo evitando 
+overfitting, etiquetar los clusters con letras A-F, y generar un summary.txt con formato: Label: N, (x, y, z), MD por 
+cada cluster."
