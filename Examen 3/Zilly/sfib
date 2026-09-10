@@ -1,0 +1,13 @@
+zilly+
+
+ Definición base de fibo 
+Z => Z fibo := fn(Z n) => Z -> if(n < 2, n, fibo(n - 1) + fibo(n - 2));
+
+1. Implementación de sfib 
+Z => Z sfib := fn(Z n) => Z -> if(n < 1, fibo(0), sfib(n - 1) + fibo(n));
+
+ 2. ¿Notan una relación entre sfib con fibo?
+Z => Z zfib := fn(Z n) => Z -> fibo(n + 2) - 1;
+
+ 3. ¿Notan una relación entre sfib con fibo?
+ Si porque zfib es  más rápido porque ejecuta una sola llamada a fibo(n + 2) y una resta, eliminando por completo la pila de llamadas recursivas de la sumatoria.
