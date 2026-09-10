@@ -11,4 +11,4 @@ Por último, sumamos esos valores para sacar el promedio simple (la medida Macon
 Uso de Inteligencia Artificial
 
 ## Modelo Utilizado
-Google Gemini | 3.6 thinking | Asistencia integral en la arquitectura de UI con React y TypeScript, desarrollo de algoritmos de parseo (RegEx), optimización de rendimiento en Web Workers.
+Google Gemini | 3.6 thinking |
