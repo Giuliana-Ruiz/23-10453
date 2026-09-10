@@ -1,1 +1,83 @@
+Tarea 1
 
+[Giuliana Ruiz]: 
+Monte una base del proyecto en Vite con React y TypeScript. Ya tengo creados los componentes `ToolBar.tsx`, `Monitor.tsx`, `List.tsx` y `Chart.tsx`. El problema esta en que al intentar cambiar entre las pestañas (Monitor, Serie, Gráfica) desde la barra, TypeScript me da error en las props porque puse el estado como un string cualquiera. Cómo debería lo deberia definir?
+
+[IA]: 
+Para evitar tipos genéricos como `string`, define un tipo literal con las opciones de navegación:
+
+export type ActiveTab = 'monitor' | 'serie' | 'chart';
+
+Luego tipa el estado en tu componente principal:
+const [activeTab, setActiveTab] = useState<ActiveTab>('monitor');
+
+Así TypeScript autocompleta las opciones en los botones de `ToolBar` y te da error de compilación si tipeas mal una pestaña.
+
+[Giuliana Ruiz]: 
+Ok y ahore le puse el tipo literal `ActiveTab` y se logro en a TypeScript. Ya se logra observar las vistas bien sin dar alertas.
+
+
+Tarea 2
+
+[Giuliana Ruiz]: 
+Ok ahora conecté el Web Worker (`tgmr-thx-1138.js`). El evento `onmessage` me está tirando strings tipo `"Y1001 [ 12.3, 14.5, 11.2 ]"`. Hice una función `processRawLine` con `.split()`, pero si viene un espacio raro o un dato corrupto, `parseFloat` me devuelve `NaN` y rompe la aplicación. ¿Cómo puedo limpiar la línea con Regex antes de convertir los números?
+
+[IA]: 
+Te conviene usar dos expresiones regulares: una para el ID del sensor y otra para capturar lo que hay dentro de los corchetes:
+
+export function processRawLine(raw: string) {
+  const idMatch = raw.match(/[A-Z]\d+/i);
+  const bracketMatch = raw.match(/\[(.*?)\]/);
+
+  if (!idMatch || !bracketMatch) return null;
+
+  const id = idMatch[0];
+  const rawValues = bracketMatch[1].split(',');
+
+  const values = rawValues
+    .map(v => parseFloat(v.trim()))
+    .filter(n => !isNaN(n));
+
+  if (values.length === 0) return null;
+
+  const sum = values.reduce((acc, curr) => acc + curr, 0);
+  const average = sum / values.length;
+
+  return {
+    id,
+    values,
+    average: parseFloat(average.toFixed(3))
+  };
+}
+
+[Giuliana Ruiz]: 
+Aja, ya la probé en consola y no salen lecturas raras. Le metí el cálculo del promedio con `reduce`, le puse `.toFixed(3)` para sacar la Medida Macondiana y lo estoy mandando a la lista de Serie.
+
+Tarea 3
+
+[Giuliana Ruiz]: 
+Chat, tengo un detalle en `Chart.tsx`. La gráfica vectorial en tiempo real dibuja los puntos bien al principio, pero si la dejo corriendo un par de minutos en `localhost:8088`, la pestaña se pone lentísima y se pega. Me fijé que el array del estado no para de crecer. 
+
+[IA]: 
+Tienes dos problemas ahí: una fuga de memoria por no remover la escucha del worker y una acumulación infinita de datos en el estado.
+
+Para arreglarlo:
+1. Desconecta el listener retornando una función de limpieza en el `useEffect`.
+2. Mantén solo un buffer de los últimos 25 puntos usando `.slice()`.
+
+Estructúralo así en `Chart.tsx`:
+
+useEffect(() => {
+  const handleMessage = (e: MessageEvent) => {
+    const parsed = processRawLine(e.data);
+    if (parsed) {
+      setHistory(prev => [...prev.slice(-24), parsed.average]);
+    }
+  };
+
+  worker.addEventListener('message', handleMessage);
+  return () => worker.removeEventListener('message', handleMessage);
+}, []);
+
+[Usuario]: 
+ No estaba haciendo el `removeEventListener` en el retorno del `useEffect`, por eso se me duplicaban los escuchadores cada vez que tocaba una pestaña. Le puse el `.slice(-24)` para congelar el buffer en 25 puntos y ahora la gráfica corre fluido a 60 fps sin colgar el navegador. Aqui esta el capture y dime si ya esta correcto
