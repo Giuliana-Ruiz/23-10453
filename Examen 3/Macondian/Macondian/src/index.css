@@ -1,0 +1,303 @@
+/* --- Macondian Modern Theme ------------------------------------------- */
+:root {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  --bg-dark: #121826;
+  --bg-card: #1e293b;
+  --bg-accent: #334155;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --brand-color: #3b82f6;
+  --brand-hover: #60a5fa;
+  --accent-gold: #f59e0b;
+  --border-color: #334155;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+
+  color-scheme: dark;
+  color: var(--text-main);
+  background-color: var(--bg-dark);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  font-weight: 500;
+  color: var(--brand-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: var(--brand-hover);
+}
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background-color: var(--bg-dark);
+}
+
+/* --- App Shell Layout ------------------------------------------------ */
+.app-shell {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  overflow: hidden;
+  background-color: var(--bg-dark);
+}
+
+.app-header {
+  flex: 0 0 auto;
+  font-size: 1.1em;
+  font-weight: 600;
+  padding: 0.25rem 0;
+  color: var(--text-main);
+}
+
+.app-footer {
+  flex: 0 0 auto;
+  padding: 0.25rem 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* --- Toolbar Controls ------------------------------------------------ */
+.app-toolbar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+}
+
+.toolbar-file {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toolbar-file .tb-btn {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-accent);
+  color: var(--text-main);
+  transition: all 0.2s ease;
+}
+
+.toolbar-file .tb-btn:hover {
+  background-color: var(--brand-color);
+  border-color: var(--brand-color);
+  transform: translateY(-1px);
+}
+
+.toolbar-origin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  background-color: rgba(245, 158, 11, 0.1);
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+
+.toolbar-filename {
+  min-width: 8rem;
+  max-width: 32rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.toolbar-error {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.toolbar-reset {
+  margin-left: auto;
+}
+
+/* --- Main Content & Panels ------------------------------------------- */
+.app-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.app-pane {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-split {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* --- FilePicker Sidebar ---------------------------------------------- */
+.filepicker {
+  flex: 0 0 13rem;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+}
+
+.filepicker-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.filepicker-empty {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.875rem;
+}
+
+.filepicker-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.filepicker-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.4rem 0.6rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--accent-gold);
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.filepicker-item:hover {
+  background-color: var(--bg-accent);
+}
+
+/* --- Divider & Interactive Elements --------------------------------- */
+.pane-divider {
+  flex: 0 0 6px;
+  align-self: stretch;
+  cursor: col-resize;
+  border-radius: 3px;
+  background-color: var(--border-color);
+  transition: background-color 0.2s;
+}
+
+.pane-divider:hover {
+  background-color: var(--brand-color);
+}
+
+.pane-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.pane-fill {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  color: var(--text-main);
+}
+
+.cli-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.cli-command {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  color: var(--text-main);
+}
+
+/* --- Responsive Breakpoint ------------------------------------------- */
+@media (max-width: 900px) {
+  .app-main, .app-split {
+    flex-direction: column;
+  }
+  .pane-divider {
+    display: none;
+  }
+  .filepicker {
+    flex: 0 0 auto;
+  }
+}
+
+/* --- Buttons --------------------------------------------------------- */
+button {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  padding: 0.5em 1.2em;
+  font-size: 0.9em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--bg-accent);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  border-color: var(--brand-color);
+  background-color: var(--brand-color);
+}
+
+button:focus, button:focus-visible {
+  outline: 2px solid var(--brand-color);
+}
