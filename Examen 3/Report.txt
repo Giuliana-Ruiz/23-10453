@@ -7,3 +7,8 @@ Primero, tomamos la línea de texto que manda el Web Worker. Usamos una expresi�
 Luego, aislamos la parte que está entre los corchetes, la dividimos usando comas y convertimos los textos a números flotantes con "parseFloat". Seguidamente, filtramos cualquier valor nulo o inválido y nos quedamos con el arreglo limpio de microsensores
 
 Por último, sumamos esos valores para sacar el promedio simple (la medida Macondiana). Retornamos la cadena formateada a 3 decimales para la pantalla de "serie" y mandamos el número al estado del "Chart" para que la gráfica en tiempo real se vaya dibujando
+
+Uso de Inteligencia Artificial
+
+## Modelo Utilizado
+Google Gemini | 3.6 thinking | Asistencia integral en la arquitectura de UI con React y TypeScript, desarrollo de algoritmos de parseo (RegEx), optimización de rendimiento en Web Workers.
